@@ -1,11 +1,11 @@
-from inventario_utils import menu
-from inventario_utils import cargar_inventario
-from inventario_utils import mostrar_inventario
-from inventario_utils import buscar_producto
-from inventario_utils import ordenar_inventario_asc
-from inventario_utils import mostrar_producto_mas_caro
-from inventario_utils import mostrar_producto_mas_barato
-from inventario_utils import producto_con_precio_mayor_quincemil
+from inventario_utils.menu import menu_principal as menu
+from inventario_utils.cargar_inventario import cargar_inventario as carga
+from inventario_utils.mostrar_segun_filtros import mostrar_inventario as mostrar
+from inventario_utils.buscar_producto import buscar_producto as buscar
+from inventario_utils.ordenar_inventario_asc import ordenar_inventario_asc as ordenar
+from inventario_utils.mostrar_segun_filtros import mostrar_producto_mas_caro as mas_caro
+from inventario_utils.mostrar_segun_filtros import mostrar_producto_mas_barato as mas_barato
+from inventario_utils.producto_con_precio_mayor_quincemil import filtrar_producto_con_precio_mayor_quincemil as mayores_quincemil
 
 # SISTEMA DE ADMINISTRACION DE PRODUCTOS PARA ALMACENES
 
@@ -14,32 +14,28 @@ opcion_input = 0
 
 while opcion_input != 6:
 
-    opcion_input = menu.menu_principal()
-
+    opcion_input = menu()
 
     if 0 < opcion_input <= 6: 
 
         match(opcion_input):
             case 1:
-                inventario = cargar_inventario.cargar_inventario(inventario)
-                mostrar_inventario.mostrar_inventario(inventario)
+                inventario = carga(inventario)
+                mostrar(inventario)
             case 2:
-                buscar_producto.buscar_producto(inventario)
+                buscar(inventario)
             case 3:
-                ordenar_inventario_asc.ordenar_inventario_asc(inventario)
+                ordenar(inventario)
             case 4:
-                mostrar_producto_mas_caro.mostrar_producto_mas_caro(inventario)
-                mostrar_producto_mas_barato.mostrar_producto_mas_barato(inventario)
+                mas_caro(inventario)
+                mas_barato(inventario)
             case 5:
-                producto_con_precio_mayor_quincemil.producto_con_precio_mayor_quincemil(inventario)
+                nuevo_inventario = mayores_quincemil(inventario)
+                print("\nSe filtrar los productos mayor a 15.000...")
+                mostrar(nuevo_inventario)
             case 6:
                 break
             case _:
                 print("error")
     else:
             print("Opcion incorrecta\n Por favor ingrese un número entre 1 y 6.")
-
-
-# Caso de uso
-if __name__ == "__main__":
-    print("Fin.")

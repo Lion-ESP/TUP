@@ -1,4 +1,4 @@
-def producto_con_precio_mayor_quincemil(inventario: list) -> None:
+def filtrar_producto_con_precio_mayor_quincemil(inventario: list) -> list:
     """
     Busca el precio con mayor valor en una lista bidimencional
 
@@ -13,10 +13,9 @@ def producto_con_precio_mayor_quincemil(inventario: list) -> None:
         print("\nEl inventario está vacío.")
         return
     
+    nuevo_inventario = []
     for i in range(len(inventario)):
-        for j in range(len(inventario[i])):
-            if inventario[i][1] > QUINCEMIL:
-                producto_con_precio_mayor_quincemil = inventario[i]
-
-    print(f"\nProducto con precio mayor a {QUINCEMIL}:")
-    print(f"{producto_con_precio_mayor_quincemil[0]} | ${producto_con_precio_mayor_quincemil[1]:.2f} | {producto_con_precio_mayor_quincemil[2]}")
+        if inventario[i][1] > QUINCEMIL:
+            nuevo_inventario = nuevo_inventario + [inventario[i]]
+    
+    return nuevo_inventario

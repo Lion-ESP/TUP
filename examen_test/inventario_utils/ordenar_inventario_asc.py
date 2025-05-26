@@ -1,4 +1,4 @@
-from inventario_utils import mostrar_inventario
+from inventario_utils.mostrar_segun_filtros import mostrar_inventario as mostrar
 
 def ordenar_inventario_asc(inventario: list) -> None:
     """
@@ -17,4 +17,4 @@ def ordenar_inventario_asc(inventario: list) -> None:
                 inventario[j] = inventario[j + 1]
                 inventario[j + 1] = aux
                 
-    mostrar_inventario.mostrar_inventario(inventario)
+    mostrar(inventario)

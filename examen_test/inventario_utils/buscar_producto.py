@@ -17,7 +17,7 @@ def buscar_producto(inventario: list) -> None:
     encontrados = []
     
     for i in range(len(inventario)):
-        if nombre_buscar.lower() == inventario[i][0].lower():
+        if nombre_buscar == inventario[i][0]:
             encontrados = encontrados + [inventario[i]]
     
     if encontrados:
